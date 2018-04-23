@@ -1,0 +1,167 @@
+/*desktop*/
+@media screen
+and (min-width: 1200px) {
+    .ProjectPage {
+        display: flex;
+        width: 100%;
+        max-width:1500px;
+        flex-direction: column;
+        padding:30px;
+        padding-top: 1em;
+    }
+
+    .ProjectPage .wrapper-projectContent{
+        display: grid;
+        grid-template-columns:300px 1fr;;
+        grid-template-rows:auto;
+        grid-template-areas:"sidebar main";
+        grid-gap: 0 10px;
+        justify-content: start;
+        align-items: start;
+        align-content: start;
+        justify-items: start;
+        text-align: left;
+    }
+
+    aside{
+        grid-area: sidebar;
+        width:100%;
+        position: sticky;
+        top: 0;
+        box-sizing: border-box;
+        padding:1em;
+        padding-left: 0;
+    }
+    aside .wrapper-titleArea{
+        border-style: solid;
+        border-width: 0 0 1px 0;
+        border-color: #78808C;
+        padding-bottom: 25px;
+        font-family: Gotham;
+    }
+
+    aside ul{
+        margin-top: 15px;
+        list-style: none;
+        padding-left: 0;
+        font-weight: bold;
+        font-size: 1.5em;
+        line-height: 2em;
+        /*color: #232323;*/
+    }
+    aside ul li a{
+        text-decoration: none;
+        color: #232323;
+        padding-left:0;
+        transition: padding-left, 0.3s;
+    }
+
+    /*active is a.active rather than a:active!!!!!*/
+    aside ul li a:hover,  aside ul li a:focus, aside ul li a.active{
+        /*background: #232323;*/
+        color: #232323;
+        padding-left:12px;
+    }
+
+    main{
+        grid-area: main;
+        width:100%;
+        justify-self: start;
+    }
+    main img{
+        box-shadow: 0 2px 10px 0 #E6EAEF;
+    }
+    main img.titleImg{
+        margin-bottom:3em;
+    }
+
+    main section{
+        margin-bottom: 2.5em;
+    }
+
+    ul.breadcrumb{
+        display:flex;
+        background: none;
+        color: #78808C;
+        list-style-type: none;
+        padding: 10px 0;
+        font-size: 1.2em;
+    }
+    ul.breadcrumb li+li:before {
+        padding: 8px;
+        color: #232323;/*color of the "/" symbol*/
+        content: "/\00a0";
+    }
+    ul.breadcrumb li:last-child {
+        color: #232323;/*color of the project name*/
+    }
+    ul.breadcrumb li a {
+        color:  #78808C;
+        text-decoration: none;
+    }
+    ul.breadcrumb li a:hover {
+        color: #232323;
+    }
+}
+
+
+
+
+
+.ProjectPage{
+    font-family: Gotham;
+}
+
+
+aside h1{
+    font-family: Gotham;
+    font-weight: bold;
+    text-transform: capitalize;
+    font-size: 2.5em;
+    line-height: 1.3em;
+}
+
+aside span {
+    color: #232323;
+    font-size: 1.2em;
+}
+
+main h2{
+    font-size:2em;
+}
+
+/* Overline From Left */
+.hvr-overline-from-left {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    position: relative;
+    overflow: hidden;
+}
+.hvr-overline-from-left:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    top: 0;
+    background: #07DBF3;
+    width: 5px;
+    height:0;
+    -webkit-transition-property: height;
+    transition-property: height;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+}
+.hvr-overline-from-left:hover:before, .hvr-overline-from-left:focus:before, .hvr-overline-from-left:active:before, .hvr-overline-from-left.active:active:before, .hvr-overline-from-left.active:focus:before, .hvr-overline-from-left.active:before, .hvr-overline-from-left.active{
+    height: 100%;
+}
+
+
+
+
+
+

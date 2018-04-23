@@ -1,0 +1,35 @@
+@import '~antd/dist/antd.css';
+
+.ProjectsWorkPage {
+    display: flex;
+    width: 100%;
+    flex-direction: column;/*for rows*/
+}
+
+/*desktop*/
+@media screen
+and (min-width: 1200px) {
+    .ProjectsWorkPage {
+        display: flex;
+        width: 100%;
+        max-width:1500px;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.rowWrapper{
+    width:100%;
+    margin-top: 1em;
+}
+
+.queue-simple{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/*.projects-grid{*/
+/*display: flex;*/
+/*}*/
