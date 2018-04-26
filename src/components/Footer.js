@@ -23,7 +23,9 @@ class Footer extends Component {
                                 to create a better experience.
                             </p>
                             <p>
-                                Check my <a href="https://nanzhaoportfolio.files.wordpress.com/2018/03/nanzhaoresume-201803.pdf" target="_blank" rel="noopener noreferrer">CV</a> or go to <Link to="/about">About
+                                {/*Check my <a href="https://nanzhaoportfolio.files.wordpress.com/2018/03/nanzhaoresume-201803.pdf" target="_blank" rel="noopener noreferrer">CV</a> or go to <Link to="/about">About*/}
+                                {/*Page</Link> to know more me. :D*/}
+                                Check my <a href="/" target="_blank" rel="noopener noreferrer">CV</a> or go to <Link to="/about">About
                                 Page</Link> to know more me. :D
                             </p>
                         </div>
@@ -31,10 +33,11 @@ class Footer extends Component {
                     <Col span={6} offset={4}>
                         <div className='widget-2'>
                             <h3>What Keeps Me Busy Now</h3>
-                            <p>Write weekly design blog -> <a href='https://zhuanlan.zhihu.com/shejiyiwenlu' target="_blank" rel="noopener noreferrer">「设计异闻录」</a></p>
+                            {/*<p>Write weekly design blog -> <a href='https://zhuanlan.zhihu.com/shejiyiwenlu' target="_blank" rel="noopener noreferrer">「设计异闻录」</a></p>*/}
                             <p>Cooperating with an artist HYMN and programming animations to make them interactive ->
                                 TWO SIDES LAB</p>
                             <p>Having fun on react.js & three.js</p>
+                            <p>Enjoying my last semester in NYU Shanghai. :)</p>
                         </div>
                     </Col>
                     <Col span={4} offset={2}>

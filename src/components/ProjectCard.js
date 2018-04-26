@@ -2,27 +2,56 @@ import React, {Component} from 'react';
 import './ProjectCard.css';
 import {Link} from 'react-router-dom';
 import thumbImg from '../file/img/thumb-test.gif'
-import {Card} from 'antd';
 
-const {Meta} = Card;
+// import
 
 class ProjectCard extends Component {
+
     render() {
-        //const {name, meta, category, tags, ...other} = this.props;
+        const {name, thumbImg,meta, category, tags, ...other} = this.props;
+        const thumbUrl = 'file/img/constellation-NOC/thumbImg.gif';
+
+        const tagsLine = tags.map((t, i) => {
+            console.log('t', t);
+            if (tags.indexOf(t) == tags.length - 1) {
+                return <span key={i}>{t}</span>
+            } else {
+                return (
+                    <span key={i}>{t + ' | '}</span>
+                )
+            }
+            ;
+        });
+
+
         return (
-            <div className="ProjectCard">
-                <div className="thumbWrapper">
-                    <img src={thumbImg} alt="thumb"/>
-                </div>
-                <div className="container">
-                    <h4><b>Project Name</b></h4>
-                    <p>Interaction Design | Information Architecture</p>
-                </div>
+            <div className="ProjectCard card-reveal">
+                <Link to='/project/1'>
+                    <div className="thumbWrapper"
+                         style={{
+                             // backgroundImage: `url(${thumbUrl})`,
+                             // backgroundSize: 'cover',
+                             // backgroundPosition: 'center',
+                         }}
+                    >
+                        <img src={thumbImg} alt="thumb"/>{/*use background later. see the css for the slider.*/}
+
+                    </div>
+                    <div className="container">
+                        <h4>{name}</h4>
+                        {/*<p>{tags}</p>*/}
+                        {tagsLine}
+                    </div>
+                </Link>
 
             </div>
 
         );
     }
 }
+
+ProjectCard.defaultProps = {
+    name: 'projectName'
+};
 
 export default ProjectCard;

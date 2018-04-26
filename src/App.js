@@ -9,6 +9,7 @@ import AboutPage from './pages/About';
 import ProjectPage from './pages/ProjectPage';
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import data from './data';
+import QueueAnim from 'rc-queue-anim';
 
 class App extends Component {
     constructor(props) {
@@ -22,27 +23,22 @@ class App extends Component {
         return (
             <Router>
                 <div className="App">
-                    {/*<div className='wrapper-header'>*/}
-                        <Header/>
-                    {/*</div>*/}
+                    <Header/>
 
-                    <div className="pages">
-                        <Route exact path="/" component={LandingPage}/>
-                        <Route path="/ux-work" component={ProjectsWorkPage}/>
-                        <Route path="/experimental-projects" component={ProjectsAllPage}/>
-                        <Route path="/about" component={AboutPage}/>
-                        <Route path="/project/:id" render={(props) => {
-                            const project = data.projects.find((p) =>
-                                parseInt(props.match.params.id) === p.id
-                            );
-                            return <ProjectPage project={project}/>
-                        }}
-                        />
-                    </div>
-
-                    {/*<div className='wrapper-footer'>*/}
+                        <div className="pages">
+                            <Route exact path="/" component={LandingPage}/>
+                            <Route path="/ux-work" component={ProjectsWorkPage}/>
+                            <Route path="/experimental-projects" component={ProjectsAllPage}/>
+                            <Route path="/about" component={AboutPage}/>
+                            <Route path="/project/:id" render={(props) => {
+                                const project = data.projects.find((p) =>
+                                    parseInt(props.match.params.id) === p.id
+                                );
+                                return <ProjectPage project={project}/>
+                            }}
+                            />
+                        </div>
                         <Footer/>
-                    {/*</div>*/}
                 </div>
 
 

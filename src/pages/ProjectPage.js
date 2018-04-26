@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import './ProjectPage.css';
-import titleImg from '../file/img/CtripProjectOptimization/titlePage.jpg'
+// import titleImg from '../file/img/CtripProjectOptimization/titlePage.jpg'
 import { BackTop } from 'antd';
 
 import {
@@ -77,7 +77,7 @@ class ProjectPage extends Component {
 
     render() {
 
-        const {id, name, meta, category, tags, date, sections} = this.props.project;//this .props is the project
+        const {id, name, meta, category, tags, date, sections, titleImg} = this.props.project;//this .props is the project
         console.log("tags", tags);
         const htmlTags = tags.map((t, i) => {
             console.log('t', t);
@@ -126,7 +126,7 @@ class ProjectPage extends Component {
                     <aside>
                         <div className='wrapper-titleArea'>
                             <h1>{name}</h1>
-                            <span>{date}</span><br/>
+                            <span>{ date.getFullYear()+ '.'+(date.getMonth()+1)}</span><br/>
                             {htmlTags}
                             {/*<p>{meta}</p> /!*现在这里放放*!/*/}
                         </div>

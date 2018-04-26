@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "antd": "^3.4.1",
+    "rc-banner-anim": "^1.0.1",
     "rc-queue-anim": "^1.5.0",
     "rc-tween-one": "^1.7.3",
     "react": "^16.2.0",

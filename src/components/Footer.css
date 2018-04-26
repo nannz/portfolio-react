@@ -22,7 +22,7 @@ and (min-width: 1200px) {
     padding:30px;
 }
 
-.rowWrapper{
+.Footer .rowWrapper{
     width:100%;
     margin-top: 1em;
 }
@@ -32,13 +32,19 @@ h2, h3{
     font-family: Gotham;
     font-weight: bold;
 }
+h2{
+     font-size: 2em;
+     margin-bottom: 0;
+}
 
 h3{
     margin-bottom: 1em;
+    font-size: 1.5em;
 }
 
-p{
+.Footer p{
     margin-bottom: 0.5em;
+    font-size:1.3em;
 }
 
 .socialMedia{
@@ -49,6 +55,6 @@ p{
     margin-right:0.5em;
 }
 
-socialMedia a:hover{
+.socialMedia a:hover{
     color: #07DBF3;
 }

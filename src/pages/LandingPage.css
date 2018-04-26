@@ -1,1 +1,76 @@
-.LandingPage{}
+.LandingPage{
+    width:100%;
+    height: calc(100vh - 200px);
+    max-height:100vh;
+}
+
+.bg{
+    /*height:100%;*/
+    /*width:80%;*/
+    height:85%;
+
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.banner-user{
+    /*height:1000px;*/
+    height:inherit;
+    /*width:80%;*/
+}
+
+.banner-user-elem{
+    height:100%;
+}
+
+.banner-user-title, .banner-user-text{
+    font-family: Gotham;
+    font-weight: bold;
+}
+
+.banner-user-title{
+    font-size: 3em;
+}
+.banner-user-text{
+    font-size: 2em;
+}
+
+.selected-link{
+    color:#232323;
+}
+
+/* SHADOW/GLOW TRANSITIONS */
+/* Glow */
+.glow {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: text-shadow;
+    transition-property: text-shadow;
+}
+.glow:hover, .glow:focus, .glow:active {
+    text-shadow: 0 0 8px rgba(35, 35, 35, 0.4);
+    color:#232323;
+}
+
+/* Grow Shadow */
+.grow-shadow {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: text-shadow, transform;
+    transition-property: text-shadow, transform;
+}
+.grow-shadow:hover, .grow-shadow:focus, .grow-shadow:active {
+    text-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.3);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}

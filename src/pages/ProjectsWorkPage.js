@@ -21,10 +21,9 @@ class ProjectsWorkPage extends Component {
     }
     render() {
         const projects = data.projects;
-
         const projectCards = projects.map(p => {
             return (
-                <Col className="gutter-row" span={6}>
+                <Col className="gutter-row" xs={24} sm={24} md={24} lg={12} xl={8}>
                     <ProjectCard {...p}/>
                 </Col>
             );
@@ -32,27 +31,29 @@ class ProjectsWorkPage extends Component {
         let row1 = [];
         for (let i = 0; i < 4; i++) {
             row1.push(
-                <Col key={i} className="gutter-row" span={6}>
+                <Col key={i} className="gutter-row" xs={24} sm={24} md={12} lg={12} xl={6}>
                     <ProjectCard/>
                 </Col>)
         }
-        // gutter: { xs: 8, sm: 16, md: 24, lg: 32 }
         const projectRow1 = (
 
-                <Row key="demo1" gutter={16} className='rowWrapper'>
+                <Row key="demo1" gutter={16}  className='rowWrapper'>
                     {row1}
                 </Row>
         );
         const projectRow2 = (
-            <Row key="demo2" gutter={16} className='rowWrapper'>
+            <Row key="demo2" gutter={16}  className='rowWrapper'>
                 {row1}
             </Row>);
 
         return (
             <div className="ProjectsWorkPage">
                 <QueueAnim delay={300} className="queue-simple" animConfig={this.state.animConfig}>
-                    {projectRow1}
-                    {projectRow2}
+                    <Row key="demo2" gutter={24} className='rowWrapper'>
+                        {projectCards}
+                        {projectCards}
+                        {projectCards}
+                    </Row>
                 </QueueAnim>
             </div>
         );

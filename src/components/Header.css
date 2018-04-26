@@ -15,6 +15,7 @@ and (min-width: 1200px) {
         max-width:1500px;
         width:90vw;
         flex-direction:row;
+        height:230px;
     }
 }
 
@@ -37,17 +38,18 @@ and (orientation: landscape) {
     flex-direction: row;
     align-items: flex-end;
     width:100%;
-    border-style: solid;
-    border-width: 0 0 1px 0;
-    border-color: #78808C;
-    padding: 30px;
+    /*border-style: solid;*/
+    /*border-width: 0 0 0.05px 0;*/
+    /*border-color: #78808C;*/
+    padding: 20px 8px 20px 8px;
     font-size: x-large;
 }
 
+
 .header-left {
     display: flex;
-    width: 230px;
-    height: 130px;
+    width: 200px;
+    /*height: 130px;*/
     background-color: #232323;
 }
 
@@ -55,7 +57,12 @@ and (orientation: landscape) {
     max-width: 100%;
     height:auto;
 }
-
+/*.header-left iframe{*/
+    /*border:0;*/
+    /*width:100%;*/
+    /*height:auto;*/
+    /*overflow:hidden;*/
+/*}*/
 
 .header-right ul {
     display: flex;
@@ -119,7 +126,7 @@ and (orientation: landscape) {
     right: 100%;
     bottom: 0;
     background: #07DBF3;
-    height: 0.3em;
+    height: 0.25em;
 
     -webkit-transition-property: right, background;
     transition-property: right, background;

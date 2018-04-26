@@ -3,10 +3,25 @@ export default {
     projects: [
         {
             id: 1,
-            name: 'Trip.com Checkout Page Optimization',
-            date:'2017.6',
-            thumbnailImg: thumbIMG,
-            meta: 'project meta 1',
+            name: 'Constellation',
+            date:new Date(2017,12),
+            selected: true,
+            thumbImg: 'file/img/constellation-NOC/thumbImg.gif',
+            meta: 'Computational arts of dynamite constellation systems',
+            category: 'Generative Arts',
+            tags: ['generative arts','Nature of Code'],
+            sections:[
+
+            ],
+        },
+        {
+            id: 2,
+            name: 'Trip.com(Ctrip) Checkout Page',
+            selected: true,
+            date:new Date(2017,6),
+            thumbImg: 'file/img/CtripProjectOptimization/thumbImg.jpg',
+            titleImg: '/file/img/CtripProjectOptimization/titleImage.jpg',
+            meta: 'Optimized Trip.com online checkout experience. The design helps the users to understand the checkout procedure and the price better as well as fasten the booking speed with the modularity of the web page and the information architecture of price details.',
             category: 'UX',
             tags: ['Web UX Design', 'Information Architecture'],
             sections:[
@@ -49,24 +64,41 @@ export default {
             ]
         },
         {
-            id: 2,
-            name: 'projectName2',
-            date:'2017.6',
-            thumbnailImg: thumbIMG,
-            meta: 'project meta 2',
-            category: 'Generative Arts',
-            tags: ['web design', 'react.js', 'WebGL', 'generative arts'],
+            id: 3,
+            name: 'Cooper Hewitt Museum',
+            date:new Date(2017,2),//for sorting
+            period:'2017.2 - 2017.5',//for displaying the project period
+            selected: false,
+            thumbImg: 'file/img/cooperHewittMuseum/thumbImg.jpg',
+            meta: 'Website Redesign for better accessibility.',
+            category: 'Animation',
+            tags: ['Web UX', 'Accessible Design'],
             sections:[],
         },
         {
-            id: 3,
-            name: 'projectName3',
-            date:'2017.6',
-            thumbnailImg: thumbIMG,
-            meta: 'project meta 3',
-            category: 'Tangible Interaction',
-            tags: ['web design', 'react.js', 'WebGL', 'generative arts'],
-            sections:[],
+            id: 4,
+            name: 'Creative Coding Collection',
+            date:new Date(2017,9),//for sorting
+            period:'2017.9 - now',//for displaying the project period
+            selected: false,
+            thumbImg: 'file/img/cooperHewittMuseum/thumbImg.jpg',
+            meta: 'A collection of my creative coding pieces',
+            category: 'Creative Coding',
+            tags: ['creative coding'],
+            sections:[
+                {
+                    id:1,
+                    name: 'My Logo',
+                    img:'file/img/creativeCoding/myLogo.gif',
+                    github: '',
+                },
+                {
+                    id:2,
+                    name: '',
+                    img:'',
+                    github: '',
+                }
+            ],
         }
 
     ]
