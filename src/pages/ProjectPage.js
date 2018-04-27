@@ -87,8 +87,7 @@ class ProjectPage extends Component {
                 return (
                     <span key={i}>{t + ' | '}</span>
                 )
-            }
-            ;
+            };
         });
         let mySections, sideBarTitles;
         if (sections.length !== 0) {
@@ -149,7 +148,6 @@ class ProjectPage extends Component {
                 2/ aside(floating) | main
                 3/ related projects/checkout other projects/go back
                 5/footer
-
                 */}
 
 

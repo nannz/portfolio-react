@@ -28,23 +28,7 @@ class ProjectsWorkPage extends Component {
                 </Col>
             );
         });
-        let row1 = [];
-        for (let i = 0; i < 4; i++) {
-            row1.push(
-                <Col key={i} className="gutter-row" xs={24} sm={24} md={12} lg={12} xl={6}>
-                    <ProjectCard/>
-                </Col>)
-        }
-        const projectRow1 = (
 
-                <Row key="demo1" gutter={16}  className='rowWrapper'>
-                    {row1}
-                </Row>
-        );
-        const projectRow2 = (
-            <Row key="demo2" gutter={16}  className='rowWrapper'>
-                {row1}
-            </Row>);
 
         return (
             <div className="ProjectsWorkPage">

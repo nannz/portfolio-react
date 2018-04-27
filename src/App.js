@@ -31,6 +31,7 @@ class App extends Component {
                             <Route path="/experimental-projects" component={ProjectsAllPage}/>
                             <Route path="/about" component={AboutPage}/>
                             <Route path="/project/:id" render={(props) => {
+
                                 const project = data.projects.find((p) =>
                                     parseInt(props.match.params.id) === p.id
                                 );

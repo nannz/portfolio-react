@@ -3,16 +3,15 @@ import './ProjectCard.css';
 import {Link} from 'react-router-dom';
 import thumbImg from '../file/img/thumb-test.gif'
 
-// import
 
 class ProjectCard extends Component {
 
     render() {
-        const {name, thumbImg,meta, category, tags, ...other} = this.props;
+        const {id,name, thumbImg,meta, category, tags, ...other} = this.props;
         const thumbUrl = 'file/img/constellation-NOC/thumbImg.gif';
 
         const tagsLine = tags.map((t, i) => {
-            console.log('t', t);
+
             if (tags.indexOf(t) == tags.length - 1) {
                 return <span key={i}>{t}</span>
             } else {
@@ -23,10 +22,12 @@ class ProjectCard extends Component {
             ;
         });
 
-
+        const projectLink = '/projects/'+id.toString();
+        // console.log('link', '/projects/'+id.toString());
+        //to={'/contacts/' + this.props.id}
         return (
             <div className="ProjectCard card-reveal">
-                <Link to='/project/1'>
+                <Link to={'/project/' + id}>
                     <div className="thumbWrapper"
                          style={{
                              // backgroundImage: `url(${thumbUrl})`,

@@ -7,11 +7,25 @@ export default {
             date:new Date(2017,12),
             selected: true,
             thumbImg: 'file/img/constellation-NOC/thumbImg.gif',
+            titleImg: '/file/img/CtripProjectOptimization/titleImage.jpg',
             meta: 'Computational arts of dynamite constellation systems',
             category: 'Generative Arts',
-            tags: ['generative arts','Nature of Code'],
+            tags: ['generative arts','openFrameworks'],
             sections:[
-
+                {
+                    id:1,
+                    name: "Project Overview",
+                    content: "CONSTELLATION is a creative coding artwork/tool which generates users' personalized, unique constellations.\n" +
+                    "\n" +
+                    "Through the analysis of a user's identity with Chinese Taoism Bagua Symbol and the implementation of nature algorithm into the programming, the project enables a user to see his/her own constellation that represents his/her identity. At the same time, the constellation itself is a living object that changes over time with the user.\n" +
+                    "\n" +
+                    "It is also my exploration of using programming language and algorithm to represent the beauty of nature."
+                },
+                {
+                    id:2,
+                    name: "Video",
+                    content: 'https://vimeo.com/253378843'
+                }
             ],
         },
         {
@@ -71,35 +85,48 @@ export default {
             selected: false,
             thumbImg: 'file/img/cooperHewittMuseum/thumbImg.jpg',
             meta: 'Website Redesign for better accessibility.',
-            category: 'Animation',
+            category: 'UX',
             tags: ['Web UX', 'Accessible Design'],
             sections:[],
         },
         {
             id: 4,
+            name: 'AKQA Me-to-Me',
+            date:new Date(2017,11),//for sorting
+            period:'2017.10 - 2017.11',//for displaying the project period
+            selected: false,
+            thumbImg: 'file/img/akqa-meTome/thumbImg.jpg',
+            meta: 'A generative coding art piece which shows people working in AKQA Shanghai dynamically.',
+            category: 'Creative Coding',
+            tags: ['Creative Coding', 'Generative Art', 'Processing'],
+            sections:[],
+        },
+        {
+            id: 5,
             name: 'Creative Coding Collection',
             date:new Date(2017,9),//for sorting
             period:'2017.9 - now',//for displaying the project period
             selected: false,
-            thumbImg: 'file/img/cooperHewittMuseum/thumbImg.jpg',
-            meta: 'A collection of my creative coding pieces',
+            thumbImg: 'file/img/creativeCoding/thumbImg.gif',
+            meta: 'A collection of my creative coding pieces with p5.js',
             category: 'Creative Coding',
-            tags: ['creative coding'],
+            tags: ['creative coding','p5.js'],
             sections:[
                 {
                     id:1,
                     name: 'My Logo',
                     img:'file/img/creativeCoding/myLogo.gif',
-                    github: '',
+                    link: 'https://nannz.github.io/projects/my-logo/index.html',
+                    content:''
                 },
                 {
                     id:2,
-                    name: '',
-                    img:'',
-                    github: '',
+                    name: 'Infinite Loop',
+                    img:'file/img/creativeCoding/infiniteLoop.gif',
+                    link: 'https://nannz.github.io/projects/infinite-loop/index.html',
+                    content:''
                 }
             ],
         }
-
     ]
 }
