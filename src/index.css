@@ -21,3 +21,8 @@ p {
     font-family: Lato, sans-serif;
     font-size: 1.5em;
 }
+
+
+button:focus{
+    outline:none;
+}

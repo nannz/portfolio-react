@@ -20,9 +20,14 @@ class ProjectsAllPage extends Component {
                 {opacity: [1, 0], translateY: [0, 50]},
                 {opacity: [1, 0], translateY: [0, -50]}
             ],
-            selectedCategory: 'All Types'
+            selectedCategory: 'All Types',
+            showDropDown:true,
         };
         this.onClickFilter = this.onClickFilter.bind(this);
+        this.triggerDropDown = this.triggerDropDown.bind(this);
+        this.handleFilter = this.handleFilter.bind(this);
+        this.showDropDown = this.showDropDown.bind(this);
+        this.hideDropDown = this.hideDropDown.bind(this);
     }
 
     onClickFilter({key}){//be care ful!!! it's {key}, not key directly
@@ -31,24 +36,39 @@ class ProjectsAllPage extends Component {
             selectedCategory:key
         })
     }
+    triggerDropDown(){
+        this.setState({
+            showDropDown:true
+        })
+    }
+    handleFilter(e){
+        this.setState({
+            selectedCategory: e.target.id,
+            showDropDown:false
+        })
+    }
+    showDropDown(){
+        this.setState({
+            showDropDown:true
+        })
+    }
+    hideDropDown(){
+        this.setState({
+            showDropDown:false
+        })
 
-    render() {
+    }/*<Menu.Item key={c}>{c}</Menu.Item>*/
+    render(){
         const projects = data.projects;
         //get each category
         this.categoryList = projects.map((project) => project.category).filter((value, index, self) => self.indexOf(value) === index).sort();
         console.log('categoryList',this.categoryList);
         const menuItems = this.categoryList.map((c,i)=>{
             return(
-                <Menu.Item key={c}>{c}</Menu.Item>
+
+                <a id={c} key={c} onClick={this.handleFilter}>{c}</a>
             );
-        })
-        //the drop down menu
-        const filter = (
-            <Menu onClick={this.onClickFilter}>
-                <Menu.Item key="All Types">All Types</Menu.Item>
-                {menuItems}
-            </Menu>
-        );
+        });
 
 
         //1/3generate all the project Cards
@@ -64,14 +84,14 @@ class ProjectsAllPage extends Component {
             <div className="ProjectsAllPage">
                     <div className='wrapper-filterLine'>
                         <p><i>I also explore many other fields!</i></p>
-                        <Dropdown overlay={filter}>
-                            {/*<a className="ant-dropdown-link" href="#">*/}
-                                {/*All Types<Icon type="down"/>*/}
-                            {/*</a>*/}
-                            <a className="ant-dropdown-link" href="#">
-                                {this.state.selectedCategory}<Icon type="down"/>
-                            </a>
-                        </Dropdown>
+
+                        <div className = 'myDropDown' onMouseOver={this.showDropDown} onMouseLeave={this.hideDropDown}>
+                            <button className="dropbtn" onClick={this.triggerDropDown}>{this.state.selectedCategory}<Icon type="down"/></button>
+                            {this.state.showDropDown && <menu className="dropdown-content">
+                                {menuItems}
+                                <a id='All Types' onClick={this.handleFilter}>All Types</a>
+                            </menu>}
+                        </div>
                     </div>
 
                 <QueueAnim delay={300} className="queue-simple" animConfig={this.state.animConfig}>

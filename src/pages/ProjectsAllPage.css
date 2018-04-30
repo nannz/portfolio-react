@@ -23,6 +23,54 @@ and (min-width: 1200px) {
         justify-content: space-between;
         margin-top: 20px;
     }
+
+    .myDropDown{
+        border:1px solid #232323;
+        height:min-content;
+        min-width: 250px;
+        /*padding:0.5em;*/
+        color:#232323;
+        justify-content: space-between;
+        text-decoration: none;
+        /*display: flex;*/
+        flex-direction: column;
+        align-items: center;
+        display: inline-block;
+    }
+    .myDropDown:hover{
+        border-bottom: none;
+    }
+
+    .myDropDown .dropbtn{
+        border: none;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.5em;
+    }
+
+    .myDropDown .dropdown-content{
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        z-index: 1;
+        align-items: flex-start;
+        background: white;
+        width: 250px;
+        border:1px solid #232323;
+        padding-left: 0;
+        -webkit-margin-before: 0;
+    }
+    .dropdown-content a{
+        width: 100%;
+        text-align: left;
+        padding: 0.2em 0 0.2em 0.5em;
+        color: #232323;
+    }
+    .dropdown-content a:hover, .dropdown-content a:focus, .dropdown-content a:active{
+        text-decoration: underline;
+    }
 }
 /*.gutter-row{*/
     /*margin-bottom*/
