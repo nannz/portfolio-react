@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import './ProjectsAllPage.css';
 import {Link} from 'react-router-dom';
-import ProjectCard from '../components/ProjectCard'
-import data from '../data'
+import ProjectCard from '../components/ProjectCard';
+import data from '../data';
 import {Row, Col} from 'antd';
 import {CSSTransition} from 'react-transition-group';
 import QueueAnim from 'rc-queue-anim';

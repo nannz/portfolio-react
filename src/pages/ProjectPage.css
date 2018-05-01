@@ -1,4 +1,4 @@
-.ProjectPage{
+.ProjectPage, .ProjectPageInfiniteLoad{
     padding: 20px 8px 20px 8px;
 }
 aside h1{
@@ -28,7 +28,7 @@ aside span {
 /*desktop*/
 @media screen
 and (min-width: 1200px) {
-    .ProjectPage {
+    .ProjectPage , .ProjectPageInfiniteLoad{
         display: flex;
         width: 100%;
         max-width:1500px;
@@ -37,7 +37,7 @@ and (min-width: 1200px) {
         padding-top: 1em;
     }
 
-    .ProjectPage .wrapper-projectContent{
+    .ProjectPage .wrapper-projectContent, .ProjectPageInfiniteLoad .wrapper-projectContent{
         display: grid;
         grid-template-columns:300px 1fr;;
         grid-template-rows:auto;

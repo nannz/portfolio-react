@@ -7,9 +7,11 @@ import ProjectsAllPage from './pages/ProjectsAllPage';
 import LandingPage from './pages/LandingPage';
 import AboutPage from './pages/About';
 import ProjectPage from './pages/ProjectPage';
+import ProjectPageInfiniteLoad from './pages/ProjectPageInfiniteLoad'
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import data from './data';
 import QueueAnim from 'rc-queue-anim';
+import ReactDOM from 'react-dom';
 
 class App extends Component {
     constructor(props) {
@@ -40,6 +42,7 @@ class App extends Component {
                             return <ProjectPage project={project}/>
                         }}
                         />
+                        <Route path="/infiniteLoadTest" component={ProjectPageInfiniteLoad}/>
                     </div>
                     {/*<div className='wrapper-footer'>*/}
                         <Footer/>
