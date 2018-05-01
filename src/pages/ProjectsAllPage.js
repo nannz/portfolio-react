@@ -4,12 +4,10 @@ import {Link} from 'react-router-dom';
 import ProjectCard from '../components/ProjectCard'
 import data from '../data'
 import {Row, Col} from 'antd';
+import {CSSTransition} from 'react-transition-group';
 import QueueAnim from 'rc-queue-anim';
 import {Menu, Dropdown, Icon, message} from 'antd';
 
-const onClick = function ({key}) {
-    message.info(`Click on item ${key}`);
-};
 
 //page for showing UX work.
 class ProjectsAllPage extends Component {
@@ -21,84 +19,130 @@ class ProjectsAllPage extends Component {
                 {opacity: [1, 0], translateY: [0, -50]}
             ],
             selectedCategory: 'All Types',
-            showDropDown:true,
+            showDropDown: false,
+            showAni_1: false,
+            showAni_2:false,
         };
-        this.onClickFilter = this.onClickFilter.bind(this);
         this.triggerDropDown = this.triggerDropDown.bind(this);
         this.handleFilter = this.handleFilter.bind(this);
         this.showDropDown = this.showDropDown.bind(this);
         this.hideDropDown = this.hideDropDown.bind(this);
     }
 
-    onClickFilter({key}){//be care ful!!! it's {key}, not key directly
-        console.log(key);
+    componentDidMount() {
+        setTimeout(() => {
+            this.setState({showAni_1: true});
+        }, 100);
+
+    }
+
+    triggerDropDown() {
         this.setState({
-            selectedCategory:key
+            showDropDown: true
         })
     }
-    triggerDropDown(){
-        this.setState({
-            showDropDown:true
-        })
-    }
-    handleFilter(e){
+
+    handleFilter(e) {
+        // console.log(e.target.id);
         this.setState({
             selectedCategory: e.target.id,
-            showDropDown:false
+            showDropDown: false,
+        });
+    }
+
+    showDropDown() {
+        this.setState({
+            showDropDown: true
         })
     }
-    showDropDown(){
+
+    hideDropDown() {
         this.setState({
-            showDropDown:true
-        })
-    }
-    hideDropDown(){
-        this.setState({
-            showDropDown:false
+            showDropDown: false
         })
 
-    }/*<Menu.Item key={c}>{c}</Menu.Item>*/
-    render(){
-        const projects = data.projects;
+    }
+
+    componentDidUpdate(prevState) {
+    }
+
+    render() {
+
+        let projects = data.projects;
         //get each category
-        this.categoryList = projects.map((project) => project.category).filter((value, index, self) => self.indexOf(value) === index).sort();
-        console.log('categoryList',this.categoryList);
-        const menuItems = this.categoryList.map((c,i)=>{
-            return(
-
+        this.categoryList = projects.map((project) => project.category).filter((value, index, self) => (self.indexOf(value) === index) && value!=='UX').sort();
+        //console.log('categoryList',this.categoryList);
+        const menuItems = this.categoryList.map((c, i) => {
+            return (
                 <a id={c} key={c} onClick={this.handleFilter}>{c}</a>
             );
         });
 
+        let filteredProjects = data.projects.slice();
+        filteredProjects = filteredProjects.filter(p=>(p.category!=='UX'));
+        if (this.state.selectedCategory !== 'All Types') {
+            const filterTemp = filteredProjects.filter(p => {
+                if (p.category.match(this.state.selectedCategory)) {
+                    return p.category.match(this.state.selectedCategory);
+                }
+            });
+            filteredProjects = filterTemp;
+        }
 
-        //1/3generate all the project Cards
-        const projectCards = projects.map((p,i) => {
+        //generate all the project Cards
+        const projectCards = filteredProjects.map((p, i) => {
             return (
                 <Col key={i} className="gutter-row" xs={24} sm={24} md={24} lg={12} xl={8}>
-                    <ProjectCard {...p}/>
+                    <ProjectCard className='fadeInUp' {...p}/>
                 </Col>
             );
         });
 
         return (
             <div className="ProjectsAllPage">
+                <CSSTransition
+                    in={this.state.showAni_1}
+                    timeout={300}
+                    classNames="fadeInUp"
+                    mountOnEnter
+                    unmountOnExit
+                    onEntered={()=>{
+                        setTimeout(
+                        this.setState({
+                            showAni_2:true
+                        }),100);
+                    }}
+                    onExited={() => {
+                    }}
+                >
                     <div className='wrapper-filterLine'>
-                        <p><i>I also explore many other fields!</i></p>
-
-                        <div className = 'myDropDown' onMouseOver={this.showDropDown} onMouseLeave={this.hideDropDown}>
-                            <button className="dropbtn" onClick={this.triggerDropDown}>{this.state.selectedCategory}<Icon type="down"/></button>
+                        <p>Besides UX, I am also passionate on generative arts, interaction design, and visual arts.</p>
+                        <div className='myDropDown' onMouseOver={this.showDropDown} onMouseLeave={this.hideDropDown}>
+                            <button className="dropbtn"
+                                    onClick={this.triggerDropDown}>{this.state.selectedCategory}<Icon
+                                type="down"/></button>
                             {this.state.showDropDown && <menu className="dropdown-content">
-                                {menuItems}
                                 <a id='All Types' onClick={this.handleFilter}>All Types</a>
+                                {menuItems}
                             </menu>}
                         </div>
                     </div>
+                </CSSTransition>
 
-                <QueueAnim delay={300} className="queue-simple" animConfig={this.state.animConfig}>
-                    <Row key="demo2" gutter={24} className='rowWrapper'>
+                <CSSTransition
+                    in={this.state.showAni_2}
+                    timeout={300}
+                    classNames="fadeInUp"
+                    mountOnEnter
+                    unmountOnExit
+                    onExited={() => {
+                    }}
+                >
+                    <Row key="demo2" gutter={24} className='rowWrapper fadeInUp'>
                         {projectCards}
                     </Row>
-                </QueueAnim>
+                </CSSTransition>
+
 
             </div>
         );

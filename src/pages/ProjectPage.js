@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import './ProjectPage.css';
-// import titleImg from '../file/img/CtripProjectOptimization/titlePage.jpg'
-import { BackTop } from 'antd';
+import titleImgTest from '../file/img/CtripProjectOptimization/titlePage.jpg'
+import {BackTop} from 'antd';
 
 import {
     Link as ScrollLink,
@@ -77,7 +77,7 @@ class ProjectPage extends Component {
 
     render() {
 
-        const {id, name, meta, category, tags, date, sections, titleImg} = this.props.project;//this .props is the project
+        const {id, name, category, tags, date, sections, titleImg} = this.props.project;//this .props is the project
         console.log("tags", tags);
         const htmlTags = tags.map((t, i) => {
             console.log('t', t);
@@ -87,24 +87,56 @@ class ProjectPage extends Component {
                 return (
                     <span key={i}>{t + ' | '}</span>
                 )
-            };
+            }
+            ;
         });
-        let mySections, sideBarTitles;
+        let mySections, sideBarTitles,myGallery;
         if (sections.length !== 0) {
             sideBarTitles = sections.map((s) => {
                 return (
-                    <li key={s.id}><ScrollLink activeClass="active" className={s.name + ' hvr-overline-from-left'} to={s.name} spy={true}
+                    <li key={s.id}><ScrollLink activeClass="active" className={s.name + ' hvr-overline-from-left'}
+                                               to={s.name} spy={true}
                                                smooth={true} duration={500}>{s.name}</ScrollLink></li>
                 );
             });
         }
+        //generate the imas gallery if any
         if (sections.length !== 0) {
+            myGallery = sections.map((s) => {
+                let imgGalleryColumns = [];
+                if (s.hasOwnProperty('imgs')) {
+                    let numEachColumn = Math.floor(s.imgs.length / 4);
+                    console.log(s.name + 'has imgs');
+                    // let columns = [];
+                    for (let i = 0; i < 4; i++) {
+                        let imgsEachColumnArr = [];
+                        for (let j = 0; j < numEachColumn; j++) {
+                            console.log('column'+j + ' '+s.imgs[numEachColumn * i + j]);
+                            let imgElement = (<img src={'/'+s.imgs[numEachColumn * i + j]}/>);
+                            imgsEachColumnArr.push(imgElement);
+                        }
+                        let column = (
+                            <div className="imgGalleryColumn">
+                                {imgsEachColumnArr}
+                            </div>
+                        );
+                        imgGalleryColumns.push(column);
+                    }
+                }
+                return (
+                    <div className='imgGalleryRow'>
+                        {imgGalleryColumns}
+                    </div>
+                );
+            });
+
             mySections = sections.map((s) => {
                 return (
                     <Element name={s.name} className="element">
                         <section className={s.name} key={s.id}>
                             <h2>{s.name}</h2>
                             <p>{s.content}</p>
+                            {s.hasOwnProperty('imgs')&& myGallery}
                         </section>
                     </Element>
                 );
@@ -125,16 +157,15 @@ class ProjectPage extends Component {
                     <aside>
                         <div className='wrapper-titleArea'>
                             <h1>{name}</h1>
-                            <span>{ date.getFullYear()+ '.'+(date.getMonth()+1)}</span><br/>
+                            <span>{date.getFullYear() + '.' + (date.getMonth() + 1)}</span><br/>
                             {htmlTags}
-                            {/*<p>{meta}</p> /!*现在这里放放*!/*/}
                         </div>
                         <ul>
                             {sideBarTitles}
                         </ul>
                     </aside>
                     <main>
-                        <BackTop />
+                        <BackTop/>
                         <img src={titleImg} className='titleImg'/>
                         {mySections}
                     </main>

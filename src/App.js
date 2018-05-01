@@ -23,23 +23,27 @@ class App extends Component {
         return (
             <Router>
                 <div className="App">
-                    <Header/>
+                    {/*<div className='wrapper-header'>*/}
+                        <Header/>
+                    {/*</div>*/}
 
-                        <div className="pages">
-                            <Route exact path="/" component={LandingPage}/>
-                            <Route path="/ux-work" component={ProjectsWorkPage}/>
-                            <Route path="/experimental-projects" component={ProjectsAllPage}/>
-                            <Route path="/about" component={AboutPage}/>
-                            <Route path="/project/:id" render={(props) => {
+                    <div className="pages">
+                        <Route exact path="/" component={LandingPage}/>
+                        <Route path="/ux-work" component={ProjectsWorkPage}/>
+                        <Route path="/experimental-projects" component={ProjectsAllPage}/>
+                        <Route path="/about" component={AboutPage}/>
+                        <Route path="/project/:id" render={(props) => {
 
-                                const project = data.projects.find((p) =>
-                                    parseInt(props.match.params.id) === p.id
-                                );
-                                return <ProjectPage project={project}/>
-                            }}
-                            />
-                        </div>
+                            const project = data.projects.find((p) =>
+                                parseInt(props.match.params.id) === p.id
+                            );
+                            return <ProjectPage project={project}/>
+                        }}
+                        />
+                    </div>
+                    {/*<div className='wrapper-footer'>*/}
                         <Footer/>
+                    {/*</div>*/}
                 </div>
 
 

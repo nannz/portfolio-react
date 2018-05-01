@@ -74,15 +74,18 @@ and (orientation: landscape) {
 
 .header-right ul li a {
     text-decoration: none;
+    margin:0;
+    padding:0;
 }
 .header-right ul li{
     text-align: center;
     color: #232323;
+    margin:0 15px 0 15px;
 }
 
 .header-right ul li a:hover{
-    background: #232323;
-    color: white;
+    /*background: #232323;*/
+    color: #232323;
 }
 
 /*.header-right ul li a:active{*/
@@ -107,7 +110,6 @@ and (orientation: landscape) {
 }
 
 
-
 /* Underline From Left */
 .nav-underline-from-left {
     display: inline-block;
@@ -125,8 +127,8 @@ and (orientation: landscape) {
     left: 0;
     right: 100%;
     bottom: 0;
-    background: #07DBF3;
-    height: 0.25em;
+    background:#232323; /*#07DBF3;*/
+    height: 0.2em;
 
     -webkit-transition-property: right, background;
     transition-property: right, background;
@@ -137,11 +139,19 @@ and (orientation: landscape) {
 }
 .nav-underline-from-left:hover:before, .nav-underline-from-left:focus:before, .nav-underline-from-left:active:before {
     right: 0;
-    background: #07DBF3;
+    background: #232323;/*#07DBF3;*/
 }
 
 /*for active link*/
 .nav-underline-from-left.active:before{
     right:0;
     background: #232323;
+    animation:activeButtonMoment 500ms ease-in;
+}
+
+
+@keyframes activeButtonMoment {
+    0%   {height: 0.2em;bottom:0;}
+    50% {height:100%;bottom:0}
+    100%  {height:100%;bottom: 100%;}
 }

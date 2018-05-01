@@ -127,6 +127,43 @@ export default {
                     content:''
                 }
             ],
+        },
+        {
+            id: 6,
+            name: 'Graphic Design Collection',
+            date:new Date(2014,9),//for sorting
+            period:'2014.9 - now',//for displaying the project period
+            selected: false,
+            thumbImg: 'file/img/graphicDesign/thumbImg.jpg',
+            meta: 'A collection of my graphic design journey',
+            category: 'Graphic Design',
+            tags: ['graphic design','branding'],
+            sections:[
+                {
+                    id:1,
+                    name: 'Intro',
+                    content:'I learned painting and sketch from the early childhood. But lateron, I realized the power of computer and digital softwares what can give more dynamity to the designs. So after I first came to the college, I learnt and practiced the digital design, graphic design, and branding identity design from different college events and internships. This journey helps me to learn what is good design and how to communicate to people via meaningful design elements.'
+                },
+                {
+                    id:2,
+                    name: 'Posters for Interactive Media Arts Program',
+                    content:'',
+                    imgs:[
+                        'file/img/graphicDesign/ima/20yearRestrospective.png',
+                        'file/img/graphicDesign/ima/360-world.png',
+                        'file/img/graphicDesign/ima/analog-fabrication.png',
+                        'file/img/graphicDesign/ima/assistivetech-conference.jpg',
+                        'file/img/graphicDesign/ima/autodesk.png',
+                        'file/img/graphicDesign/ima/gaming-culture.png',
+                        'file/img/graphicDesign/ima/ima-final-show.png',
+                        'file/img/graphicDesign/ima/meow-space.jpg',
+                        'file/img/graphicDesign/ima/rube-goldberg.png',
+                        'file/img/graphicDesign/ima/star-wars.png',
+                        'file/img/graphicDesign/ima/typeself.jpg',
+                        'file/img/graphicDesign/ima/windowfarm.png'
+                    ],
+                }
+            ],
         }
     ]
 }

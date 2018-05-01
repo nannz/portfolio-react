@@ -8,20 +8,36 @@ import data from '../data'
 import {Row, Col} from 'antd';
 import QueueAnim from 'rc-queue-anim';
 
+import {CSSTransition} from 'react-transition-group';
+
 //page for showing UX work.
 class ProjectsWorkPage extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
-        this.state={
+        this.state = {
             animConfig: [
-                { opacity: [1, 0], translateY: [0, 50] },
-                { opacity: [1, 0], translateY: [0, -50] }
+                {opacity: [1, 0], translateY: [0, 50]},
+                {opacity: [1, 0], translateY: [0, -50]}
             ],
+            showGrid:false,
         }
     }
+    componentDidMount() {
+        setTimeout(() => {
+            this.setState({showGrid: true});
+        }, 100);
+
+    }
+
     render() {
-        const projects = data.projects;
-        const projectCards = projects.map(p => {
+        let filteredProjects = data.projects.slice();
+        filteredProjects = filteredProjects.filter(p => {
+            if (p.category.match('UX')) {
+                return p.category.match(this.state.selectedCategory);
+            }
+        });
+
+        const projectCards = filteredProjects.map(p => {
             return (
                 <Col className="gutter-row" xs={24} sm={24} md={24} lg={12} xl={8}>
                     <ProjectCard {...p}/>
@@ -32,13 +48,21 @@ class ProjectsWorkPage extends Component {
 
         return (
             <div className="ProjectsWorkPage">
-                <QueueAnim delay={300} className="queue-simple" animConfig={this.state.animConfig}>
-                    <Row key="demo2" gutter={24} className='rowWrapper'>
+                <CSSTransition
+                    in={this.state.showGrid}
+                    timeout={300}
+                    classNames="fadeInUp"
+                    mountOnEnter
+                    unmountOnExit
+                    onExited={() => {
+                    }}
+                >
+                    <Row key="demo2" gutter={24} className='rowWrapper fadeInUp'>
                         {projectCards}
                         {projectCards}
                         {projectCards}
                     </Row>
-                </QueueAnim>
+                </CSSTransition>
             </div>
         );
     }
