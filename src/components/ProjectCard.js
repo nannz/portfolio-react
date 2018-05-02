@@ -3,7 +3,7 @@ import './ProjectCard.css';
 import {Link} from 'react-router-dom';
 import thumbImg from '../file/img/thumb-test.gif'
 import {CSSTransition} from 'react-transition-group';
-
+import LazyLoad from 'react-lazyload';
 class ProjectCard extends Component {
     constructor(props) {
         super(props);
@@ -50,14 +50,13 @@ class ProjectCard extends Component {
                 <div className="ProjectCard fadeInUp">
                     <Link to={'/project/' + id} className='fadeInUp'>
                         <div className="thumbWrapper"
-                             style={{
-                                 // backgroundImage: `url(${thumbUrl})`,
-                                 // backgroundSize: 'cover',
-                                 // backgroundPosition: 'center',
-                             }}
                         >
-                            <img src={thumbImg} alt="thumb"/>{/*use background later. see the css for the slider.*/}
-
+                            <LazyLoad height={300} once offset={[-100, 0]}
+                                      placeholder={<div className='img-placeholder'></div>}
+                                      debounce={500}
+                            >
+                                <img src={thumbImg} alt="thumb"/>{/*use background later. see the css for the slider.*/}
+                            </LazyLoad>
                         </div>
                         <div className="container">
                             <h4>{name}</h4>

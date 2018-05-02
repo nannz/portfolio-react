@@ -3,7 +3,8 @@ import {Link} from 'react-router-dom';
 import './ProjectPage.css';
 import titleImgTest from '../file/img/CtripProjectOptimization/titlePage.jpg'
 import {BackTop} from 'antd';
-
+import {Spin} from 'antd';
+import InfiniteScroll from 'react-infinite-scroller';
 import {
     Link as ScrollLink,
     DirectLink,
@@ -12,16 +13,19 @@ import {
     animateScroll as scroll,
     scrollSpy,
     scroller
-} from 'react-scroll'
+} from 'react-scroll';
+import LazyLoad from 'react-lazyload';
 
 class ProjectPage extends Component {
     constructor(props) {
         super(props);
-        this.state={
-            displaySections:null,
-            displayImgs:null
+        this.state = {
+            displaySections: [],
+            hasMoreSection: true
         };
         this.scrollToTop = this.scrollToTop.bind(this);
+        this.loadMore = this.loadMore.bind(this);
+        this.project = this.props.project;
     }
 
     componentDidMount() {
@@ -73,6 +77,20 @@ class ProjectPage extends Component {
             }));
     }
 
+    loadMore(page) {//page is the next section's id
+        //load the next section
+        const sectionId = page;
+        if (sectionId <= this.project.sections.length) {
+            const newSection = this.project.sections[sectionId - 1];
+            console.log('newSection', newSection);
+            let copy = this.state.displaySections.concat(newSection);
+            this.setState({displaySections: copy});
+        } else {
+            this.setState({hasMoreSection: false})
+        }
+
+    }
+
     componentWillUnmount() {
         Events.scrollEvent.remove('begin');
         Events.scrollEvent.remove('end');
@@ -81,10 +99,8 @@ class ProjectPage extends Component {
 
     render() {
 
-        const {id, name, category, tags, date, sections, titleImg} = this.props.project;//this .props is the project
-        console.log("tags", tags);
+        const {id, name, category, tags, date, sections, titleImg} = this.project;//this .props is the project
         const htmlTags = tags.map((t, i) => {
-            console.log('t', t);
             if (tags.indexOf(t) == tags.length - 1) {
                 return <span key={i}>{t}</span>
             } else {
@@ -94,7 +110,7 @@ class ProjectPage extends Component {
             }
             ;
         });
-        let mySections, sideBarTitles,myGallery;
+        let mySections, sideBarTitles, myGallery;
         if (sections.length !== 0) {
             sideBarTitles = sections.map((s) => {
                 return (
@@ -105,47 +121,65 @@ class ProjectPage extends Component {
             });
         }
         //generate the imas gallery if any
-        if (sections.length !== 0) {
-            myGallery = sections.map((s) => {
-                let imgGalleryColumns = [];
-                if (s.hasOwnProperty('imgs')) {
-                    let numEachColumn = Math.floor(s.imgs.length / 4);
-                    console.log(s.name + 'has imgs');
-                    // let columns = [];
-                    for (let i = 0; i < 4; i++) {
-                        let imgsEachColumnArr = [];
-                        for (let j = 0; j < numEachColumn; j++) {
-                            console.log('column'+j + ' '+s.imgs[numEachColumn * i + j]);
-                            let imgElement = (<img src={'/'+s.imgs[numEachColumn * i + j]}/>);
+        //if (sections.length !== 0) {
+        mySections = this.state.displaySections.map((s) => {
+            const numOfColumns = 3;
+            //myGallery = this.state.displaySections.map((s) => {
+            let imgGalleryColumns = [];
+            if (s.hasOwnProperty('imgs')) {
+                let numEachColumn = Math.floor(s.imgs.length / numOfColumns);
+                for (let i = 0; i < numOfColumns; i++) {
+                    let imgsEachColumnArr = [];
+                    for (let j = 0; j < numEachColumn; j++) {
+                        if (j == numEachColumn - 1 && i == (numOfColumns - 1) && (numEachColumn * i + j) < s.imgs.length - 1) {
+                            let imgElement = (
+                                <img src={'/' + s.imgs[numEachColumn * i + j]}/>
+                            );
+                            imgsEachColumnArr.push(imgElement);
+                            imgElement = (
+                                <img src={'/' + s.imgs[s.imgs.length - 1]}/>
+                            );
+                            imgsEachColumnArr.push(imgElement);
+                        } else {
+                            let imgElement = (
+                                <img src={'/' + s.imgs[numEachColumn * i + j]}/>
+                            );
                             imgsEachColumnArr.push(imgElement);
                         }
-                        let column = (
-                            <div className="imgGalleryColumn">
-                                {imgsEachColumnArr}
-                            </div>
-                        );
-                        imgGalleryColumns.push(column);
                     }
-                }
-                return (
-                    <div className='imgGalleryRow'>
-                        {imgGalleryColumns}
-                    </div>
-                );
-            });
+                    const imgsEachColumnArrLazy = imgsEachColumnArr.map((imgElement,i) => {
+                        return (
+                            <LazyLoad height={200} once key={i} offset={[-100, 0]}
+                                      placeholder={<div className='img-placeholder'>Loading</div>}
+                                      debounce={100}
+                            >{imgElement}</LazyLoad>
+                        );
+                    });
 
-            mySections = sections.map((s) => {
-                return (
-                    <Element name={s.name} className="element">
-                        <section className={s.name} key={s.id}>
-                            <h2>{s.name}</h2>
-                            <p>{s.content}</p>
-                            {s.hasOwnProperty('imgs')&& myGallery}
-                        </section>
-                    </Element>
-                );
-            });
-        }
+                    let column = (
+                        <div className="imgGalleryColumn">
+                            {imgsEachColumnArrLazy}
+                        </div>
+                    );
+                    imgGalleryColumns.push(column);
+                }
+            }
+            const myGallery = (
+                <div className='imgGalleryRow'>
+                    {imgGalleryColumns}
+                </div>
+            );
+
+            return (
+                <Element name={s.name} className="element" key={s.id}>
+                    <section className={s.name} key={s.id}>
+                        <h2>{s.name}</h2>
+                        {s.hasOwnProperty('content') && <div dangerouslySetInnerHTML={{__html: s.content}}/>}
+                        {s.hasOwnProperty('imgs') && myGallery}
+                    </section>
+                </Element>
+            );
+        });
 
 
         return (
@@ -171,7 +205,14 @@ class ProjectPage extends Component {
                     <main>
                         <BackTop/>
                         <img src={titleImg} className='titleImg'/>
-                        {mySections}
+                        <InfiniteScroll
+                            pageStart={0}
+                            loadMore={this.loadMore}
+                            hasMore={this.state.hasMoreSection}
+                            loader={<div className="loadingArea" key={0}><Spin/></div>}
+                        >
+                            {mySections}
+                        </InfiniteScroll>
                     </main>
                 </div>
                 <div className='otherProjects'>

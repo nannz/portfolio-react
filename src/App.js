@@ -7,7 +7,8 @@ import ProjectsAllPage from './pages/ProjectsAllPage';
 import LandingPage from './pages/LandingPage';
 import AboutPage from './pages/About';
 import ProjectPage from './pages/ProjectPage';
-import ProjectPageInfiniteLoad from './pages/ProjectPageInfiniteLoad'
+import ProjectPageInfiniteLoad from './pages/ProjectPageInfiniteLoad';
+import Slide from './components/Slide'
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import data from './data';
 import QueueAnim from 'rc-queue-anim';
@@ -30,7 +31,8 @@ class App extends Component {
                     {/*</div>*/}
 
                     <div className="pages">
-                        <Route exact path="/" component={LandingPage}/>
+                        {/*<Route exact path="/" component={LandingPage}/>*/}
+                        <Route exact path="/" component={Slide}/>
                         <Route path="/ux-work" component={ProjectsWorkPage}/>
                         <Route path="/experimental-projects" component={ProjectsAllPage}/>
                         <Route path="/about" component={AboutPage}/>

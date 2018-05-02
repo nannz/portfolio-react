@@ -8,7 +8,7 @@ class Footer extends Component {
     render() {
         return (
             <footer className="Footer">
-                <h2><b>Hi I am Nan.</b></h2>
+                <h2><b>Hi I am Nannnn!</b></h2>
                 <Row type="flex" justify="space-between" align="top" className='rowWrapper'>
                     <Col span={8}>
                         <div className='widget-1'>

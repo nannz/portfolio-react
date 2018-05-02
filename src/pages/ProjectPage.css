@@ -24,16 +24,35 @@ aside span {
     margin-top: 8px;
     vertical-align: middle;
 }
-
+.img-placeholder{
+    width:100%;
+    height:auto;
+    min-height:300px;
+    background: #D9D6D7;
+    font-family: Gotham;
+    font-size:2em;
+    font-weight:bold;
+    font-color: #636363;
+    text-align: center;
+    align-content: center;
+    align-items:center;
+    /*justify-items: center;*/
+    justify-content: center;
+    display: flex;
+    animation: imgPlaceholder 2s infinite;
+}
+@keyframes imgPlaceholder {
+    0% {background: #D9D6D7;}
+    50% {background: #232323;}
+    100% {background: #D9D6D7;}
+}
 /*desktop*/
 @media screen
 and (min-width: 1200px) {
     .ProjectPage , .ProjectPageInfiniteLoad{
         display: flex;
         width: 100%;
-        max-width:1500px;
         flex-direction: column;
-        /*padding:30px;*/
         padding-top: 1em;
     }
 
@@ -73,8 +92,11 @@ and (min-width: 1200px) {
         padding-left: 0;
         font-weight: bold;
         font-size: 1.5em;
-        line-height: 2em;
+        /*line-height: 2em;*/
         /*color: #232323;*/
+    }
+    aside ul li{
+        margin-bottom: 0.5em
     }
     aside ul li a{
         text-decoration: none;
@@ -103,7 +125,7 @@ and (min-width: 1200px) {
     }
 
     main section{
-        margin-bottom: 2.5em;
+        margin-bottom: 5em;
     }
 
     ul.breadcrumb{
@@ -131,8 +153,8 @@ and (min-width: 1200px) {
         color: #232323;
     }
     .imgGalleryColumn{
-        flex: 25%;
-        max-width: 25%;
+        flex: calc(100%/3);
+        max-width: calc(100%/3);
         padding: 0 4px;
     }
 }

@@ -61,6 +61,10 @@ class ProjectsWorkPage extends Component {
                         {projectCards}
                         {projectCards}
                         {projectCards}
+                        {projectCards}
+                        {projectCards}
+                        {projectCards}
+                        {projectCards}
                     </Row>
                 </CSSTransition>
             </div>

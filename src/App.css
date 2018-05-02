@@ -24,6 +24,9 @@ and (min-width: 1200px) {
         /*order: 3;*/
         /*grid-area: footer;*/
     /*}*/
+    .pages{
+        max-width:1800px;
+    }
 }
 .App {
     text-align: center;

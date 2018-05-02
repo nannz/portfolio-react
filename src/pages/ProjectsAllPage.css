@@ -12,7 +12,6 @@ and (min-width: 1200px) {
     .ProjectsAllPage {
         display: flex;
         width: 100%;
-        max-width:1500px;
         flex-direction: column;
         align-items: center;
     }
@@ -28,7 +27,7 @@ and (min-width: 1200px) {
     .myDropDown{
         border:1px solid #232323;
         height:min-content;
-        min-width: 250px;
+        min-width: 15%;/*250px;*/
         /*padding:0.5em;*/
         color:#232323;
         justify-content: space-between;
@@ -57,7 +56,7 @@ and (min-width: 1200px) {
         z-index: 1;
         align-items: flex-start;
         background: white;
-        width: 250px;
+        width: 15%;/*250px;*/
         border:1px solid #232323;
         padding-left: 0;
         -webkit-margin-before: 0;
