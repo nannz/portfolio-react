@@ -1,4 +1,4 @@
-.ProjectPage, .ProjectPageInfiniteLoad{
+.Project, .ProjectPage, .ProjectPageInfiniteLoad{
     padding: 20px 8px 20px 8px;
 }
 aside h1{
@@ -51,17 +51,17 @@ aside span {
 and (min-width: 1200px) {
     .ProjectPage , .ProjectPageInfiniteLoad{
         display: flex;
-        width: 100%;
+        width: 90%;
         flex-direction: column;
         padding-top: 1em;
     }
 
-    .ProjectPage .wrapper-projectContent, .ProjectPageInfiniteLoad .wrapper-projectContent{
+    .wrapper-projectContent, .ProjectPageInfiniteLoad .wrapper-projectContent{
         display: grid;
         grid-template-columns:300px 1fr;;
         grid-template-rows:auto;
         grid-template-areas:"sidebar main";
-        grid-gap: 0 10px;
+        grid-gap: 0 50px;
         justify-content: start;
         align-items: start;
         align-content: start;

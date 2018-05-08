@@ -215,9 +215,9 @@ class ProjectPage extends Component {
                         </InfiniteScroll>
                     </main>
                 </div>
-                <div className='otherProjects'>
-                    I am a grid of related projects, only one row.
-                </div>
+                {/*<div className='otherProjects'>*/}
+                    {/*I am a grid of related projects, only one row.*/}
+                {/*</div>*/}
                 {/*
                 0/ header
                 1/ breadcrumb

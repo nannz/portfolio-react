@@ -41,7 +41,7 @@ class App extends Component {
                             return <ProjectPage project={project}/>
                         }}
                         />
-                        <Route path="/my-reactive-portfolio" componenet={Project}/>
+                        <Route path="/my-reactive-portfolio" component={Project}/>
                     </div>
                     {/*<div className='wrapper-footer'>*/}
                         <Footer/>

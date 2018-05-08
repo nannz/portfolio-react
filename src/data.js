@@ -15,7 +15,7 @@ export default {
             sections:[
                 {
                     id:1,
-                    name: "Project Overview",
+                    name: "Overview",
                     content: `<p>CONSTELLATION is a creative coding artwork/tool which generates users' personalized, unique constellations.
                     <br/>Through the analysis of a user's identity with Chinese Taoism Bagua Symbol and the implementation of nature algorithm into the programming, the project enables a user to see his/her own constellation that represents his/her identity. At the same time, the constellation itself is a living object that changes over time with the user
                     <br/>It is also my exploration of using programming language and algorithm to represent the beauty of nature.
@@ -41,7 +41,7 @@ export default {
             sections:[
                 {
                     id:1,
-                    name: "Project Overview",
+                    name: "Overview",
                     content: `<p>I am the project overview content. </p><p>Optimized Trip.com online checkout experience. The design helps the users to understand the checkout procedure and the price better as well as fasten the booking speed with the modularity of the web page and the information architecture of price details.</p>`
                 },
                 {
