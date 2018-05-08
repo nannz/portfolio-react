@@ -5,7 +5,6 @@ import ProjectCard from '../components/ProjectCard';
 import data from '../data';
 import {Row, Col} from 'antd';
 import {CSSTransition} from 'react-transition-group';
-import QueueAnim from 'rc-queue-anim';
 import {Menu, Dropdown, Icon, message} from 'antd';
 
 
@@ -43,7 +42,6 @@ class ProjectsAllPage extends Component {
     }
 
     handleFilter(e) {
-        // console.log(e.target.id);
         this.setState({
             selectedCategory: e.target.id,
             showDropDown: false,

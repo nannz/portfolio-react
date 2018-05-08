@@ -36,7 +36,7 @@ class Footer extends Component {
                             {/*<p>Write weekly design blog -> <a href='https://zhuanlan.zhihu.com/shejiyiwenlu' target="_blank" rel="noopener noreferrer">「设计异闻录」</a></p>*/}
                             <p>Cooperating with an artist HYMN and programming animations to make them interactive ->
                                 TWO SIDES LAB</p>
-                            <p>Having fun on react.js & three.js</p>
+                            <p>Having fun on <Link to='/my-reactive-portfolio'>react.js</Link> & three.js</p>
                             <p>Enjoying my last semester in NYU Shanghai. :)</p>
                         </div>
                     </Col>

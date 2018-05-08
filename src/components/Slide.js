@@ -31,7 +31,11 @@ class Slide extends Component {
     }
 
     componentDidMount() {
-        setInterval(this.nextProject, 5000);
+        this.timer = setInterval(this.nextProject, 5000);
+    }
+
+    componentWillUnmount(){
+        clearInterval(this.timer);
     }
 
     lastProject() {

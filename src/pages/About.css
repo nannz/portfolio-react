@@ -1,3 +1,57 @@
-.About{
+.About {
+    text-align: left;
+    display: flex;
+    width: 80%;
+    flex-direction: row;/*for rows*/
+    align-items: center;
+}
+@media screen
+and (min-width: 1200px) {
+    .About {
+        margin-top: 50px;
+        display: flex;
+        width: 80%;
+        flex-direction: row;
+        align-items: self-start;
+    }
+    .about-left{
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0;
+        margin-right: 3em;
+        padding: 0;
+        text-transform: uppercase;
+        font-size: 1.4em;
+        font-weight: bold;
+        width:100%;
+
+    }
+    .about-left a, .about-left a:hover{
+        text-decoration: none;
+        width: 100%;
+        text-align: center;
+        color:#232323;
+    }
+
+    .about-heroImage {
+        float: left;
+        /*width:500px;*/
+        width:100%;
+        height:auto;
+    }
+    .aboutpage-section{
+        margin-bottom: 3em;
+    }
+    .aboutpage-section h2{
+        margin-bottom: 1em;
+    }
+
+    .aboutpage-section ol{
+        font-size: 1.5em;
+        /*padding-left:0;*/
+        /*-webkit-margin-before: 0em;*/
+        -webkit-padding-start: 20px;
+    }
 
 }

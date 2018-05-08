@@ -1,5 +1,6 @@
 import thumbIMG from './file/img/thumb-test.gif'
 export default {
+
     projects: [
         {
             id: 1,
@@ -191,5 +192,5 @@ export default {
                 }
             ],
         }
-    ]
+    ],
 }
