@@ -4,12 +4,11 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import ProjectsWorkPage from './pages/ProjectsWorkPage';
 import ProjectsAllPage from './pages/ProjectsAllPage';
-import LandingPage from './pages/LandingPage';
 import AboutPage from './pages/About';
 import ProjectPage from './pages/ProjectPage';
 import ProjectPageInfiniteLoad from './pages/ProjectPageInfiniteLoad';
 import Slide from './components/Slide'
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 import data from './data';
 import ReactDOM from 'react-dom';
 import Project from './pages/Project';

@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import '../pages/ProjectPage.css';
-import titleImgTest from '../file/img/CtripProjectOptimization/titlePage.jpg'
 import {BackTop} from 'antd';
 import data from '../data';
 import {Spin} from 'antd';

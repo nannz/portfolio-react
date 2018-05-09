@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './Header.css';
-import logo from '../file/img/logo-nan.jpg'
+// import logo from '../file/img/logo-nan.jpg'
 import {Link} from 'react-router-dom';
 
 class Header extends Component {
@@ -26,9 +26,7 @@ class Header extends Component {
             <header className="Header">
                 <div className='header-left' onClick={this.onClickLink}>
                     <Link to="/" value='0'>
-                        <img src={logo} className='logoImg' alt="logo"/>
-                        {/*<iframe src="file/code/homePage-demoHeader/index.html" scrolling="no">*/}
-                        {/*</iframe>*/}
+                        <img src='/file/img/logo-nan.jpg' className='logoImg' alt="logo"/>
                     </Link>
                 </div>
                 <div className='header-right'>

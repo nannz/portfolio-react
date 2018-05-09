@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import './ProjectCard.css';
 import {Link} from 'react-router-dom';
-import thumbImg from '../file/img/thumb-test.gif'
 import {CSSTransition} from 'react-transition-group';
 import LazyLoad from 'react-lazyload';
 class ProjectCard extends Component {
