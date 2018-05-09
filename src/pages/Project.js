@@ -27,7 +27,11 @@ class Project extends Component {
             date: new Date(),
             tags: [],
             sections: [],
+
+            isLoading:true,
+            error:null
         };
+
         this.client = contentful.createClient({
             space: 'x20bqc7u7wlt',
             accessToken: 'd8636c69a4dab4809a27e7fe2a013f455a898700315a910a4f6ae38033a857cd'
@@ -78,7 +82,9 @@ class Project extends Component {
         this.client.getEntries({
             'content_type': 'project'//the Post content type
         })
-            .then(this.setPortfolios);
+            .then(this.setPortfolios)
+            .then(this.setState({isLoading:false}))
+            .catch(error => this.setState({ error: error, isLoading: false }));
 
 
         Events.scrollEvent.register('begin', function () {
@@ -91,6 +97,14 @@ class Project extends Component {
     }
 
     render() {
+        if (this.state.isLoading) {
+            return <Spin/>;
+        }
+
+        if (this.state.error) {
+            return <p>Error! {this.state.error}</p>;
+        }
+
         console.log(this.state.sections);
         const htmlTags = this.state.tags.map((t, i) => {
             if (this.state.tags.indexOf(t) == this.state.tags.length - 1) {
@@ -114,14 +128,18 @@ class Project extends Component {
         });
 
 
-
         mySections = this.state.sections.map((s) => {
-            let imgs=[];
-            if(s.fields.images){
-                imgs = s.fields.images.map(img=>{
-                    console.log('url',img.fields.file.url);
-                    return(
-                        <img src={img.fields.file.url} alt="Image" className='sectionImage'/>
+            let imgs = [];
+            if (s.fields.images) {
+                imgs = s.fields.images.map(img => {
+                    console.log('url', img.fields.file.url);
+                    return (
+                        <LazyLoad height={200} once offset={[-100, 0]}
+                                  placeholder={<div className='img-placeholder'>Loading</div>}
+                                  debounce={100}
+                        >
+                            <img src={img.fields.file.url} alt="Image" className='sectionImage'/>
+                        </LazyLoad>
                     );
                 })
             }
@@ -131,10 +149,7 @@ class Project extends Component {
                     <section key={s.fields.sectionId}>
                         <h2>{s.fields.title}</h2>
                         <Markdown source={s.fields.content}/>
-                        <LazyLoad height={200} once  offset={[-100, 0]}
-                                  placeholder={<div className='img-placeholder'>Loading</div>}
-                                  debounce={100}
-                        >{imgs}</LazyLoad>
+                        {imgs}
 
                     </section>
                 </Element>

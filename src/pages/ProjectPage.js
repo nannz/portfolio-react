@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import './ProjectPage.css';
-import titleImgTest from '../file/img/CtripProjectOptimization/titlePage.jpg'
 import {BackTop} from 'antd';
 import {Spin} from 'antd';
 import InfiniteScroll from 'react-infinite-scroller';

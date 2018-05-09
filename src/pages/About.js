@@ -3,7 +3,6 @@ import './About.css';
 import Header from '../components/Header'
 import {Link} from 'react-router-dom';
 import data from '../data';
-// var contentful = require('contentful');
 import * as contentful from 'contentful';
 import * as Markdown from 'react-markdown';
 

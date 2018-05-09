@@ -5,7 +5,7 @@ import ProjectCard from '../components/ProjectCard';
 import data from '../data';
 import {Row, Col} from 'antd';
 import {CSSTransition} from 'react-transition-group';
-import {Menu, Dropdown, Icon, message} from 'antd';
+import {Icon} from 'antd';
 
 
 //page for showing UX work.
